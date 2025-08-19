@@ -57,32 +57,32 @@ export default function ContactSection() {
       icon: Mail,
       title: "Email",
       description: "Drop me a line anytime",
-      value: "hello@portfolio.dev",
-      action: "mailto:hello@portfolio.dev",
+      value: "sidd190bansal@gmail.com",
+      action: "mailto:sidd190bansal@gmail.com",
       color: "from-blue-500 to-cyan-500",
     },
     {
       icon: MessageCircle,
       title: "Let's Chat",
       description: "Schedule a call",
-      value: "Book a meeting",
-      action: "#",
+      value: "Get instant answers",
+      action: "https://x.com/Sidd190b",
       color: "from-green-500 to-emerald-500",
     },
     {
       icon: MapPin,
       title: "Location",
       description: "Based in",
-      value: "San Francisco, CA",
-      action: "#",
+      value: "New Delhi, India",
+      action: "https://en.wikipedia.org/wiki/New_Delhi",
       color: "from-purple-500 to-pink-500",
     },
   ]
 
   const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub", color: "#333" },
-    { icon: Linkedin, href: "#", label: "LinkedIn", color: "#0077B5" },
-    { icon: Twitter, href: "#", label: "Twitter", color: "#1DA1F2" },
+    { icon: Github, href: "https://github.com/sidd190", label: "GitHub", color: "#333" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/siddharth-bansal-968531307/", label: "LinkedIn", color: "#0077B5" },
+    { icon: Twitter, href: "https://x.com/Sidd190b", label: "Twitter", color: "#1DA1F2" },
   ]
 
   const containerVariants = {
@@ -291,11 +291,13 @@ export default function ContactSection() {
                 <div className="space-y-3">
                   {[
                     "🚀 Full-stack web apps",
-                    "📱 Mobile applications",
-                    "🎨 UI/UX design",
+                    "📱 Reverse Engineering",
+                    "🎨 Systems design",
+                    "🚀 Low level programming",
                     "⚡ API development",
                     "🔧 Performance optimization",
                     "💡 Technical consulting",
+                    "🛠️ Custom software solutions",
                   ].map((service, index) => (
                     <motion.div
                       key={service}
@@ -329,19 +331,6 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              {/* Call to action */}
-              <div className="neubrutalist-card bg-[#FF0080] p-6">
-                <div className="space-y-4">
-                  <h4 className="font-black text-xl text-white">READY TO START?</h4>
-                  <p className="text-white font-bold text-sm leading-relaxed">
-                    Let's build something INCREDIBLE together! No boring meetings - just pure creativity!
-                  </p>
-                  <Button className="neubrutalist-button bg-white text-black hover:bg-[#00FF80] font-black">
-                    SCHEDULE CALL
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </div>
-              </div>
             </motion.div>
           </div>
         </motion.div>

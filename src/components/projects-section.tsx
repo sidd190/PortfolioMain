@@ -1,5 +1,5 @@
 "use client"
-
+import Link from "next/link"
 import { useState, useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -24,87 +24,99 @@ export default function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [hoveredProject, setHoveredProject] = useState<string | null>(null)
 
-  const categories = ["All", "Web Apps", "Mobile", "Design Systems", "Open Source"]
+  // Added "In Progress" for Coupler
+  const categories = ["All", "Web Apps", "Design Systems", "In Progress"]
 
+  // === YOUR PROJECTS ===
   const projects: Project[] = [
     {
-      id: "1",
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with real-time inventory and payment processing",
+      id: "dimsee",
+      title: "Dimsee",
+      description:
+        "Full-stack platform with real-time experiences, modern auth, and a polished UI.",
       longDescription:
-        "A comprehensive e-commerce platform built with Next.js and Stripe integration, featuring real-time inventory management, advanced search, and seamless checkout experience.",
-      image: "/modern-ecommerce-dashboard.png",
-      technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Tailwind CSS"],
+        // Edit this copy to match Dimsee precisely
+        "A production-grade app built with a modern web stack. It features secure authentication, real-time interactions, robust data modeling, and a crisp, accessible UI. I focused on performance (SSR/ISR), DX, and clean component architecture.",
+      image: "../../../public/dimsee-hero.png",
+      technologies: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Auth.js", "Tailwind CSS", "WebSockets"],
       category: "Web Apps",
+      githubUrl: "https://github.com/sidd190/Dimsee",
+      liveUrl: "https://dimsee.netlify.app",
+      featured: true,
+    },
+    {
+      id: "coupler",
+      title: "Coupler (Upcoming)",
+      description:
+        "Upcoming data/reporting tool—my build focuses on UX, reliability, and integrations.",
+      longDescription:
+        // High-level placeholder—replace with specifics of your upcoming build
+        "An in-progress project exploring automated data pipelines and report building. I’m designing a streamlined onboarding, robust integration layer, and shareable dashboards. The emphasis is on modular architecture and delightful UX.",
+      image: "/projects/coupler-upcoming.png",
+      technologies: ["Next.js", "TypeScript", "tRPC", "PostgreSQL", "Prisma", "Tailwind CSS"],
+      category: "In Progress",
       githubUrl: "#",
       liveUrl: "#",
       featured: true,
     },
     {
-      id: "2",
-      title: "Task Management App",
-      description: "Collaborative project management tool with real-time updates and team features",
+      id: "club-website",
+      title: "Club Website",
+      description:
+        "Fast, accessible club site with events, media, and CMS-powered content.",
       longDescription:
-        "A powerful task management application with drag-and-drop functionality, real-time collaboration, and advanced project analytics.",
-      image: "/task-management-interface.png",
-      technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Material-UI"],
-      category: "Web Apps",
-      githubUrl: "#",
-      liveUrl: "#",
-      featured: true,
-    },
-    {
-      id: "3",
-      title: "Design System Library",
-      description: "Comprehensive component library with documentation and design tokens",
-      longDescription:
-        "A complete design system with reusable components, design tokens, and comprehensive documentation for consistent user experiences.",
-      image: "/design-system-components.png",
-      technologies: ["React", "Storybook", "TypeScript", "CSS-in-JS", "Figma"],
-      category: "Design Systems",
-      githubUrl: "#",
-      liveUrl: "#",
-      featured: false,
-    },
-    {
-      id: "4",
-      title: "Mobile Fitness App",
-      description: "Cross-platform fitness tracking app with social features and AI coaching",
-      longDescription:
-        "A comprehensive fitness application with workout tracking, social challenges, and AI-powered coaching recommendations.",
-      image: "/fitness-app-interface.png",
-      technologies: ["React Native", "Firebase", "TensorFlow", "Redux", "Expo"],
-      category: "Mobile",
-      githubUrl: "#",
-      liveUrl: "#",
-      featured: true,
-    },
-    {
-      id: "5",
-      title: "Open Source CLI Tool",
-      description: "Developer productivity tool for automating common development tasks",
-      longDescription:
-        "A command-line interface tool that automates repetitive development tasks and improves developer productivity across different projects.",
-      image: "/terminal-cli-interface.png",
-      technologies: ["Node.js", "TypeScript", "Commander.js", "Chalk", "Inquirer"],
-      category: "Open Source",
-      githubUrl: "#",
-      liveUrl: "#",
-      featured: false,
-    },
-    {
-      id: "6",
-      title: "Analytics Dashboard",
-      description: "Real-time data visualization platform with interactive charts and insights",
-      longDescription:
-        "A comprehensive analytics platform featuring real-time data processing, interactive visualizations, and customizable dashboards.",
-      image: "/analytics-dashboard-charts.png",
-      technologies: ["Vue.js", "D3.js", "Python", "FastAPI", "PostgreSQL"],
+        "A modern club website featuring events, announcements, photo/video galleries, and a blog. Built for performance and maintainability with a headless CMS so non-devs can update content easily.",
+      image: "/projects/club-website.png",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "MDX/Headless CMS", "Vercel"],
       category: "Web Apps",
       githubUrl: "#",
       liveUrl: "#",
       featured: false,
     },
+    {
+      id: "chatting-platform",
+      title: "Chatting Platform",
+      description:
+        "Realtime chat with DMs, group rooms, presence, and typing indicators.",
+      longDescription:
+        "A realtime messaging app featuring 1:1 and group chats, presence, typing indicators, unread counts, and optimistic UI updates. Clean socket abstractions and a modular UI kit.",
+      image: "/projects/chat-app.png",
+      technologies: ["Next.js", "TypeScript", "WebSockets", "Redis", "Tailwind CSS"],
+      category: "Web Apps",
+      githubUrl: "#",
+      liveUrl: "#",
+      featured: false,
+    },
+    {
+      id: "notes-app",
+      title: "Notes App",
+      description:
+        "Markdown notes with tags, search, offline mode, and sync.",
+      longDescription:
+        "A minimalist notes app supporting Markdown, keyboard shortcuts, full-text search, tagging, and offline-first sync. Emphasis on snappy UX and robust data model.",
+      image: "/projects/notes-app.png",
+      technologies: ["Next.js", "TypeScript", "IndexedDB", "PWA", "Tailwind CSS"],
+      category: "Web Apps",
+      githubUrl: "#",
+      liveUrl: "#",
+      featured: false,
+    },
+    {
+      id: "pinterest-clone",
+      title: "Pinterest Clone",
+      description:
+        "Masonry grid, saves, boards, and infinite scroll—clean, responsive UI.",
+      longDescription:
+        "A visual discovery clone with Masonry layout, pin creation, board organization, and infinite scrolling. Focused on accessibility and polished interactions.",
+      image: "/projects/pinterest-clone.png",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Cloudinary", "PostgreSQL"],
+      category: "Web Apps",
+      githubUrl: "#",
+      liveUrl: "#",
+      featured: false,
+    },
+    // If your LinkedIn post includes additional frontend-only builds, add them here
+    // using the same shape.
   ]
 
   const filteredProjects =
@@ -116,10 +128,7 @@ export default function ProjectsSection() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.1,
-      },
+      transition: { duration: 0.8, staggerChildren: 0.1 },
     },
   }
 
@@ -128,10 +137,7 @@ export default function ProjectsSection() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.6, ease: "easeOut" },
     },
   }
 
@@ -140,10 +146,7 @@ export default function ProjectsSection() {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.5, ease: "easeOut" },
     },
   }
 
@@ -161,16 +164,17 @@ export default function ProjectsSection() {
               <span className="text-[#FF0080]">FEATURED</span> <span className="text-[#00FF80]">PROJECTS</span>
             </h2>
             <p className="text-lg font-bold text-foreground max-w-3xl mx-auto leading-relaxed uppercase tracking-wide">
-              A SHOWCASE OF MY RECENT WORK, FROM FULL-STACK APPLICATIONS TO OPEN SOURCE CONTRIBUTIONS
+              A SHOWCASE OF MY RECENT WORK—FROM FULL-STACK PLATFORMS TO UPCOMING BUILDS
             </p>
           </motion.div>
 
+          {/* Highlighted (first two featured) */}
           <motion.div variants={itemVariants} className="space-y-8">
             <h3 className="text-3xl font-black uppercase tracking-wide text-foreground drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]">
               <span className="text-[#0080FF]">HIGHLIGHTED</span> WORK
             </h3>
             <div className="grid lg:grid-cols-2 gap-8">
-              {featuredProjects.slice(0, 2).map((project, index) => (
+              {featuredProjects.slice(0, 2).map((project) => (
                 <motion.div
                   key={project.id}
                   variants={cardVariants}
@@ -189,14 +193,18 @@ export default function ProjectsSection() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
                         <div className="flex gap-2">
-                          <Button className="neubrutalist-button bg-[#FF0080] text-white">
-                            <Play className="w-4 h-4 mr-2" />
-                            LIVE DEMO
-                          </Button>
-                          <Button className="neubrutalist-button bg-[#00FF80] text-black">
-                            <Github className="w-4 h-4 mr-2" />
-                            CODE
-                          </Button>
+                          <Link href={project.liveUrl} aria-label="View live project">
+                            <Button className="neubrutalist-button bg-[#FF0080] text-white">
+                              <Play className="w-4 h-4 mr-2" />
+                              LIVE DEMO
+                            </Button>
+                          </Link>
+                          <Link href={project.githubUrl} aria-label="View source code">
+                            <Button className="neubrutalist-button bg-[#00FF80] text-black">
+                              <Github className="w-4 h-4 mr-2" />
+                              CODE
+                            </Button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -253,6 +261,7 @@ export default function ProjectsSection() {
             </div>
           </motion.div>
 
+          {/* Filters + Grid */}
           <motion.div variants={itemVariants} className="space-y-8">
             <div className="flex flex-wrap justify-center gap-4">
               {categories.map((category, index) => (
@@ -277,7 +286,7 @@ export default function ProjectsSection() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map((project, index) => (
+              {filteredProjects.map((project) => (
                 <motion.div
                   key={project.id}
                   variants={cardVariants}
@@ -362,16 +371,14 @@ export default function ProjectsSection() {
             <p className="text-foreground font-bold uppercase tracking-wide">
               INTERESTED IN SEEING MORE OF MY WORK OR DISCUSSING A PROJECT?
             </p>
-            <Button className="neubrutalist-button bg-[#FF0080] text-white text-lg px-8 py-4 font-black uppercase tracking-wide">
-              <motion.span
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2"
-              >
-                LET'S WORK TOGETHER
-                <ArrowRight className="w-5 h-5" />
-              </motion.span>
-            </Button>
+            <Link href="https://x.com/Sidd190b">
+              <Button className="neubrutalist-button bg-[#FF0080] text-white text-lg px-8 py-4 font-black uppercase tracking-wide">
+                <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-flex items-center gap-2">
+                  LET'S WORK TOGETHER
+                  <ArrowRight className="w-5 h-5" />
+                </motion.span>
+              </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>
