@@ -82,7 +82,7 @@ export default function ContactSection() {
   const socialLinks = [
     { icon: Github, href: "https://github.com/sidd190", label: "GitHub", color: "#333" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/siddharth-bansal-968531307/", label: "LinkedIn", color: "#0077B5" },
-    { icon: Twitter, href: "https://x.com/Sidd190b", label: "Twitter", color: "#1DA1F2" },
+    { icon: Twitter, href: "https://x.com/Sidd190b", label: "X", color: "#1DA1F2" },
   ]
 
   const containerVariants = {
